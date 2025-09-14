@@ -52,6 +52,15 @@ export async function POST(request:NextRequest){
             uploadStream.end(bytes);
         }
         );
+         return NextResponse.json(
+            {
+                publicId: result.public_id
+            },
+            {
+                status: 200
+            }
+        )
+
 
         //what we did above ???
         /*
