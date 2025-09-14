@@ -91,3 +91,32 @@ export async function POST(request:NextRequest){
         return NextResponse.json({error:"Upload image failed"},{status:500})
     }
 }
+
+
+//well ek question yeh aaya hoga ki hum image upload mai kyu db ko include nhi kr rhe hai waise ??
+//answer yeh hai ki image generally kaafi jyada small size ki hoti hai toh isiliye hume db se connection ki koi jarrurat nhi pdti
+
+/*
+For images (like profile pics, thumbnails, banners):
+Many times, you don’t need to keep a DB record.
+You can just store the Cloudinary public_id or URL directly in the user’s record (e.g., User.profilePic).
+No need for a separate table unless you’re building something like a gallery system.
+
+For videos:
+Videos are heavier and usually content pieces (like a video post, lecture, short, etc.).
+They need metadata (title, description, duration, sizes).
+They’re not just “assets” attached to a user — they’re “entities” of your app.
+That’s why you model them in a separate Video table
+
+Images → often act as attributes of another model.
+Example: User has a profilePicUrl. No need for a separate Image table.
+
+Videos → usually standalone entities.
+Example: YouTube’s Video table stores each video with metadata.
+That’s why you explicitly created a row in Prisma.
+
+
+
+*/
+
+
