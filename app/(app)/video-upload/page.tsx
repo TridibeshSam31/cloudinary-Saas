@@ -27,12 +27,23 @@ function VideoUpload (){
     formData.append("title",title)
     formData.append("description",description)
     formData.append("originalSize",file.size.toString())
+    //FormData is used for sending files and text together in one request (multipart/form-data).
+    /*
+    Adds:
+
+   file → actual video file.
+   title → user input string.
+   description → user input string.
+   originalSize → raw file size (as string). Might be useful on backend to validate.
+
+    */
 
 
 
     try {
       const response = await axios.post("/api/video-upload",formData)
       toast.success("uploaded Successfully")
+      
         
     } catch (error) {
       toast.error("Upload failed")
@@ -98,3 +109,5 @@ function VideoUpload (){
   )
   
 }
+
+export default VideoUpload;
