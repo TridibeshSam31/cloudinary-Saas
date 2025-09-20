@@ -4,20 +4,10 @@ import {Download,Clock,FileDown,FileUp} from "lucide-react"
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import {filesize} from "filesize"
+import {Video} from '@/types'
 // Define the Video type locally (adjust fields as needed)
-interface Video {
-  id: string;
-  title: string;
-  url: string;
-  createdAt: Date;
-  size: number;
-  publicId: string; // Added property for Cloudinary publicId
-  duration:number;
-  description:string;
-  originalSize:string;
-  compressedSize:string;
-  // Add other fields as required
-}
+
+
 
 
 
