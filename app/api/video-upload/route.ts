@@ -5,14 +5,14 @@
 import { NextRequest,NextResponse } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
 import { auth } from "@clerk/nextjs/server";
-import { PrismaClient } from "@prisma/client";
-import { error } from "console";
+import { PrismaClient } from "@prisma/client"
+
 
 type CloudinaryUploadResult = {
     public_id: string;
     [key: string]: any;
     bytes: number;
-    duration?: number;
+    duration?: string;
 }
 
 cloudinary.config({
@@ -82,7 +82,7 @@ export async function POST(request:NextRequest){
                 publicId: result.public_id,
                 originalSize: originalSize,
                 compressedSize: String(result.bytes),
-                duration: result.duration || 0,
+                duration: result.duration || "0",
             }
         })
         return NextResponse.json(video)

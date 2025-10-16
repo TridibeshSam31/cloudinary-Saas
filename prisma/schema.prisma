@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+ 
 }
 
 datasource db {
@@ -16,13 +16,13 @@ datasource db {
 
 
 model Video {
-  id String @id @default(cuid())
+  id String @id @default(uuid())
   title String
   description String?
   publicId String
   originalSize String
   compressedSize String
-  duration String
+  duration String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

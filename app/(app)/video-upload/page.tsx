@@ -1,4 +1,6 @@
+"use client"
 import React,{useState} from 'react'
+
 import axios from 'axios'
 import {useRouter} from 'next/navigation'
 import toast, { Toaster } from "react-hot-toast"
@@ -9,7 +11,7 @@ function VideoUpload (){
   const[description,setDescription] = useState("")
   const[isUploading,setIsUploading] = useState(false)
   
-  ;const router = useRouter()
+  const router = useRouter()
   //max file size of 60mb
 
   const MAX_FILE_SIZE = 60*1024*1024

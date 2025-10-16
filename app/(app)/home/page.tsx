@@ -17,6 +17,7 @@ function Home(){
     try {
       const response = await axios.get("/api/videos")
       if(Array.isArray(response.data)){
+        setVideos(response.data)
 
       }else{
         throw new Error("Unexpected response format")
@@ -50,7 +51,9 @@ function Home(){
 
      if(loading){
         return <div>Loading...</div>
-    }
+      }
+
+      
 
 
 
@@ -81,3 +84,5 @@ function Home(){
 
 
 }
+
+export default Home;

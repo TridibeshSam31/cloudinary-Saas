@@ -28,7 +28,7 @@
   "@clerk/nextjs": "^6.31.9",
   
     
-  "@prisma/client": "^6.15.0",
+  "@prisma/client": "^6.16.2",
   
     
   "axios": "^1.12.2",
@@ -92,7 +92,7 @@
   "eslint-config-next": "15.5.2",
   
     
-  "prisma": "^6.15.0",
+  "prisma": "^6.16.2",
   
     
   "tailwindcss": "^4.1.13",
