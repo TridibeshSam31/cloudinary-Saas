@@ -21,7 +21,8 @@ function VideoUpload (){
     if(!file) return;
 
     if(file.size > MAX_FILE_SIZE){
-      return console.log("File size is too large")
+      toast.error("File size is too large. Maximum size is 60MB.")
+      return
     }
     setIsUploading(true)
     const formData = new FormData()
@@ -44,14 +45,14 @@ function VideoUpload (){
 
     try {
       const response = await axios.post("/api/video-upload",formData)
-      toast.success("uploaded Successfully")
-      
-        
-    } catch (error) {
-      toast.error("Upload failed")
+      console.log(response.data)
+      toast.success("Uploaded successfully!")
+      router.push("/home")
+    } catch (error: any) {
+      const errorMessage = error?.response?.data?.error || "Upload failed"
+      toast.error(errorMessage)
     }finally{
       setIsUploading(false)
-      
     }
 
     
@@ -63,6 +64,7 @@ function VideoUpload (){
   }
   return (
     <div className="container mx-auto p-4">
+          <Toaster />
           <h1 className="text-2xl font-bold mb-4">Upload Video</h1>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>

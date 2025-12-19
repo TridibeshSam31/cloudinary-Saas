@@ -17,8 +17,8 @@ type CloudinaryUploadResult = {
 
 cloudinary.config({
     cloud_name:process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-    api_key:process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
-    api_secret:process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET
+    api_key:process.env.CLOUDINARY_API_KEY,
+    api_secret:process.env.CLOUDINARY_API_SECRET
 })
 
 const prisma = new PrismaClient()//initialising prisma db
@@ -27,7 +27,7 @@ export async function POST(request:NextRequest){
     //simialr to image upload the process is same we just have to change the resource type to video
     try {
        //user authenticated or not
-     const {userId} =await auth();
+     const {userId} = await auth();
      if(!userId){
         return NextResponse.json({error:"User not authorized"},{status:401})
      } 
@@ -82,7 +82,7 @@ export async function POST(request:NextRequest){
                 publicId: result.public_id,
                 originalSize: originalSize,
                 compressedSize: String(result.bytes),
-                duration: result.duration || "0",
+                duration: result.duration ? String(result.duration) : "0",
             }
         })
         return NextResponse.json(video)

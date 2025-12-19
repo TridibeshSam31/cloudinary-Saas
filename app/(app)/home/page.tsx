@@ -36,17 +36,13 @@ function Home(){
   },[fetchVideos])
 
   const handleDownload = useCallback((url: string, title: string) => {
-        () => {
-            const link = document.createElement("a");
-            link.href = url;
-            link.setAttribute("download", `${title}.mp4`);
-            link.setAttribute("target", "_blank");
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-
-        }
-
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", `${title}.mp4`);
+        link.setAttribute("target", "_blank");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }, []);
 
      if(loading){
@@ -61,6 +57,11 @@ function Home(){
   return(
      <div className="container mx-auto p-4">
           <h1 className="text-2xl font-bold mb-4">Videos</h1>
+          {error && (
+            <div className="alert alert-error mb-4">
+              <span>{error}</span>
+            </div>
+          )}
           {videos.length === 0 ? (
             <div className="text-center text-lg text-gray-500">
               No videos available

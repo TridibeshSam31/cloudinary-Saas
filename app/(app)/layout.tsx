@@ -15,13 +15,15 @@ import {
     Share2Icon,
     UploadIcon,
     ImageIcon,
+    ScissorsIcon,
 } from "lucide-react"
 
 
 const sidebarItems = [
   { href: "/home", icon: LayoutDashboardIcon, label: "Home Page" },
   { href: "/social-share", icon: Share2Icon, label: "Social Share" },
-  { href: "/video-upload", icon: UploadIcon, label: "Video Upload" },
+  { href: "/video-upload", icon: UploadIcon, label: "Quick Upload (No Trim)" },
+  { href: "/video-edit", icon: ScissorsIcon, label: "Upload & Trim Video" },
 ]
 
 
