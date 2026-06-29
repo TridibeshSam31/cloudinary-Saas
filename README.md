@@ -1,4 +1,4 @@
-# ☁️ MediaHub— Video & Image Management Platform
+# ☁️ MediaHub — Video & Image Management Platform
 
 <div align="center">
 
